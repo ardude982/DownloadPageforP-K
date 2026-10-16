@@ -356,8 +356,8 @@
         var t = 1 - p.life / p.maxLife;
         var r = p.size * (0.6 + t * 0.8);
         var grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r * 3);
-        grad.addColorStop(0, "rgba(80,133,255," + (t * 0.55).toFixed(3) + ")");
-        grad.addColorStop(1, "rgba(80,133,255,0)");
+        grad.addColorStop(0, "rgba(57,146,235," + (t * 0.55).toFixed(3) + ")");
+        grad.addColorStop(1, "rgba(57,146,235,0)");
         ctx.beginPath();
         ctx.arc(p.x, p.y, r * 3, 0, Math.PI * 2);
         ctx.fillStyle = grad;
