@@ -2,8 +2,6 @@
 
 A self-contained, bilingual (Persian / English) download landing page for **P K**, a social media app. Built as a static scroll site with no framework and no build step — just HTML, CSS, and JS.
 
-🔗 Live preview (editable artifact): https://claude.ai/artifact/GFBoznTrz3EekECpLdNK2J
-
 ## Features
 
 - **Bilingual, RTL-first** — Persian is the default language (`dir="rtl"`), with a header toggle that switches the whole UI to English (`dir="ltr"`) instantly, no page reload.
