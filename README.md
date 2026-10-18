@@ -75,4 +75,5 @@ Targets evergreen browsers (Chrome, Safari, Firefox, Edge — last 2 versions). 
 
 ## License
 
-Add your preferred license here (MIT is a common default for a project like this). The vendored QR library ([QRious](https://github.com/neocotic/qrious)) is MIT-licensed; the vendored Vazirmatn font is licensed under the [SIL Open Font License 1.1](https://openfontlicense.org/).
+The vendored QR library ([QRious](https://github.com/neocotic/qrious)) is MIT-licensed 
+the vendored Vazirmatn font is licensed under the [SIL Open Font License 1.1](https://openfontlicense.org/).
