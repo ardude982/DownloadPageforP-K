@@ -10,7 +10,7 @@ A self-contained, bilingual (Persian / English) download landing page for **P K*
 - **Interactive device mockups** — the laptop/phone mockups tilt in 3D following the cursor; clicking an item in the "Choose how you connect" list smooth-scrolls to the matching platform section.
 - **Real, scannable QR code** — generated client-side at error-correction level `H` with the app logo overlaid in the center (via [QRious](https://github.com/neocotic/qrious), vendored locally).
 - **Cursor particle trail** — a lightweight canvas-based spark emitter that follows the mouse, automatically disabled when the visitor has `prefers-reduced-motion` on.
-- **Zero external requests** — fonts (Vazirmatn, self-hosted as WOFF2) and the QR library are vendored locally. The only non-local reference in the whole project is the placeholder `https://p-k.me` used in the QR code value and a couple of CTA buttons (see **Before you launch** below).
+- **Zero external requests** — fonts (Vazirmatn, self-hosted as WOFF2) and the QR library are vendored locally. The only non-local references in the whole project are the placeholder `https://p-k.me` used in the QR code value and a couple of CTA buttons, and the real `https://t.me/pksocialmedia` Telegram link in the footer (see **Before you launch** below).
 - **Fully responsive** — tested down to small phone widths; horizontal overflow is explicitly locked down so tilted/rotated mockups never cause side-scroll on mobile.
 - **Accessible basics** — keyboard-operable clickable rows (`tabindex`, `Enter`/`Space` support), `aria-label`s on icon-only buttons, `prefers-reduced-motion` respected everywhere animation is used.
 
@@ -24,9 +24,9 @@ A self-contained, bilingual (Persian / English) download landing page for **P K*
 ├── vendor/
 │   └── qrious.min.js       # QR code generation library (MIT, vendored)
 └── assets/
-    ├── pk-icon.png          # logo / favicon
-    ├── bazaar-icon.png       # Cafe Bazaar mark
-    ├── myket-icon.png        # Myket mark
+    ├── pk-icon.webp          # logo / favicon
+    ├── bazaar-icon.webp       # Cafe Bazaar mark
+    ├── myket-icon.webp        # Myket mark
     ├── app-screenshot.webp   # phone screenshot (hero / QR section)
     ├── laptop-screenshot.webp
     ├── phone-screenshot-a.webp
@@ -66,7 +66,7 @@ A few things are intentionally left as placeholders and are marked with `// TODO
 | "Go to the site" button in the iOS modal | same placeholder | your real domain |
 | Cafe Bazaar download link | `#btnBazaar`, `#btnBazaar2` (`href="#"`) | your Cafe Bazaar listing URL |
 | Myket download link | `#btnMyket`, `#btnMyket2` (`href="#"`) | your Myket listing URL |
-| Social links in the footer | `href="#"` on the Telegram/LinkedIn/Instagram icons | your real profile URLs |
+| Website icon in the footer | already points at `https://p-k.me` | update once your real domain is live |
 | Status page | `#view-status` | wire up to real uptime monitoring once you have it — it currently shows a static "Operational" state |
 
 ## Browser support
