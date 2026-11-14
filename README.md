@@ -78,3 +78,26 @@ npx serve .
 
 **P K** — پیام‌رسان و رسانه اجتماعی ایرانی  
 سایت: [https://p-k.me](https://p-k.me)
+
+## Structure
+
+```
+pk-download/
+├── index.html          # Home / download page
+├── pages/
+│   ├── privacy.html
+│   ├── terms.html
+│   ├── faq.html
+│   └── status.html
+├── css/
+│   ├── style.css
+│   └── fonts/          # Local Vazirmatn + Lalezar
+├── js/
+│   ├── app.js
+│   └── qrious.min.js
+├── assets/             # Logo images
+├── LICENSE
+└── README.md
+```
+
+Language (FA/EN) is switched in the UI — no separate HTML files per language.
