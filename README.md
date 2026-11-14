@@ -1,79 +1,80 @@
-# P K — Download Site
+# P K Download Landing Page (Open Source)
 
-A self-contained, bilingual (Persian / English) download landing page for **P K**, a social media app. Built as a static scroll site with no framework and no build step — just HTML, CSS, and JS.
+این پروژه نسخه بازمتن صفحه دانلود پیام‌رسان و شبکه اجتماعی **P K** است.
 
-## Features
+## ساختار پروژه (Multi-page)
 
-- **Bilingual, RTL-first** — Persian is the default language (`dir="rtl"`), with a header toggle that switches the whole UI to English (`dir="ltr"`) instantly, no page reload.
-- **Light / dark theme toggle** — manual switch independent of system preference, remembered across visits via `localStorage`.
-- **Scroll-animated sections** — hero, a laptop + phone device showcase, dedicated PWA/iOS and Android preview sections, a QR download card, a security/blockchain section, an FAQ, and a live-status page, each revealing on scroll via `IntersectionObserver`.
-- **Interactive device mockups** — the laptop/phone mockups tilt in 3D following the cursor; clicking an item in the "Choose how you connect" list smooth-scrolls to the matching platform section.
-- **Real, scannable QR code** — generated client-side at error-correction level `H` with the app logo overlaid in the center (via [QRious](https://github.com/neocotic/qrious), vendored locally).
-- **Cursor particle trail** — a lightweight canvas-based spark emitter that follows the mouse, automatically disabled when the visitor has `prefers-reduced-motion` on.
-- **Zero external requests** — fonts (Vazirmatn, self-hosted as WOFF2) and the QR library are vendored locally. The only non-local references in the whole project are the placeholder `https://p-k.me` used in the QR code value and a couple of CTA buttons, and the real `https://t.me/pksocialmedia` Telegram link in the footer (see **Before you launch** below).
-- **Fully responsive** — tested down to small phone widths; horizontal overflow is explicitly locked down so tilted/rotated mockups never cause side-scroll on mobile.
-- **Accessible basics** — keyboard-operable clickable rows (`tabindex`, `Enter`/`Space` support), `aria-label`s on icon-only buttons, `prefers-reduced-motion` respected everywhere animation is used.
+صفحات قبلاً به صورت SPA (تک‌صفحه‌ای با hash routing) بودند. حالا به صفحات جداگانه تقسیم شده‌اند:
 
-## Project structure
+| فایل | توضیح |
+|------|--------|
+| `index.html` یا `خانه.html` | صفحه اصلی / دانلود |
+| `privacy.html` یا `حریم-خصوصی.html` | حریم خصوصی |
+| `terms.html` یا `قوانین.html` | قوانین و مقررات |
+| `faq.html` یا `سوالات-متداول.html` | سوالات متداول |
+| `status.html` یا `وضعیت-سرور.html` | وضعیت سرور |
+
+### پوشه‌ها
 
 ```
-.
-├── index.html              # markup only
-├── styles.css              # all styling (minified)
-├── script.js                # all behavior: routing, theme/lang, particles, tilt, QR (minified)
-├── vendor/
-│   └── qrious.min.js       # QR code generation library (MIT, vendored)
-└── assets/
-    ├── pk-icon.webp          # logo / favicon
-    ├── bazaar-icon.webp       # Cafe Bazaar mark
-    ├── myket-icon.webp        # Myket mark
-    ├── app-screenshot.webp   # phone screenshot (hero / QR section)
-    ├── laptop-screenshot.webp
-    ├── phone-screenshot-a.webp
-    ├── phone-screenshot-b.webp
-    ├── globe-banner.webp
-    └── fonts/
-        └── vazirmatn-*.woff2 # Vazirmatn, 400/500/600/700, Arabic + Latin subsets
+pk-download/
+├── index.html              # صفحه اصلی
+├── خانه.html               # نام فارسی صفحه اصلی
+├── privacy.html
+├── حریم-خصوصی.html
+├── terms.html
+├── قوانین.html
+├── faq.html
+├── سوالات-متداول.html
+├── status.html
+├── وضعیت-سرور.html
+├── css/
+│   └── style.css           # استایل‌های کامل (شامل فونت Vazirmatn)
+├── js/
+│   ├── app.js              # منطق اپلیکیشن (زبان، تم، انیمیشن‌ها، QR و ...)
+│   └── qrious.min.js       # کتابخانه تولید QR Code (GPL v3)
+└── README.md
 ```
 
-No `node_modules`, no bundler, no package.json required to run it.
+## ویژگی‌ها
 
-## Running locally
+- پشتیبانی کامل دو زبانه (فارسی / English) با قابلیت تغییر زبان
+- تم روشن / تاریک
+- Progressive Web App (PWA) برای iOS
+- لینک دانلود از کافه بازار و مایکت
+- QR Code برای اسکن سریع
+- انیمیشن‌های ذرات پس‌زمینه و افکت‌های 3D
+- صفحات جداگانه برای SEO بهتر و بارگذاری سریع‌تر هر بخش
 
-Any static file server works — the page is pure HTML/CSS/JS.
+## نحوه اجرا
+
+فقط فایل‌ها را روی هر وب‌سرور استاتیک (Nginx, Apache, GitHub Pages, Netlify و ...) قرار دهید.
+
+برای تست محلی:
 
 ```bash
-# Python
+# با Python
 python3 -m http.server 8080
 
-# Node
+# یا با npx
 npx serve .
 ```
 
-Then open `http://localhost:8080`. Opening `index.html` directly via `file://` also works, since nothing depends on a server-side route.
+سپس مرورگر را روی `http://localhost:8080` باز کنید.
 
-## Deploying
+## تکنولوژی‌ها
 
-Upload the five items in this folder (`index.html`, `styles.css`, `script.js`, `vendor/`, `assets/`) to any static host — Nginx, Caddy, GitHub Pages, Cloudflare Pages, Netlify, S3 — as-is. No environment variables, no build command.
+- HTML5 + CSS3 (RTL-first)
+- JavaScript خالص (بدون فریم‌ورک)
+- [QRious](https://github.com/neocotic/qrious) برای QR Code
+- فونت [Vazirmatn](https://github.com/rastikerdar/vazirmatn) (embedded)
 
-## Before you launch
+## لایسنس
 
-A few things are intentionally left as placeholders and are marked with `// TODO` comments near the top of `script.js`:
+کد اصلی این صفحه متعلق به تیم P K است.  
+کتابخانه QRious تحت لایسنس GPL v3 منتشر شده است.
 
-| What | Where | Replace with |
-|---|---|---|
-| QR code target | `script.js`, `QRious({ value: "https://p-k.me" ... })` | your real domain |
-| "Go to the site" button in the iOS modal | same placeholder | your real domain |
-| Cafe Bazaar download link | `#btnBazaar`, `#btnBazaar2` (`href="#"`) | your Cafe Bazaar listing URL |
-| Myket download link | `#btnMyket`, `#btnMyket2` (`href="#"`) | your Myket listing URL |
-| Website icon in the footer | already points at `https://p-k.me` | update once your real domain is live |
-| Status page | `#view-status` | wire up to real uptime monitoring once you have it — it currently shows a static "Operational" state |
+---
 
-## Browser support
-
-Targets evergreen browsers (Chrome, Safari, Firefox, Edge — last 2 versions). Uses `aspect-ratio`, `:focus-visible`, CSS custom properties, and `IntersectionObserver`, all broadly supported. No polyfills included.
-
-## License
-
-The vendored QR library ([QRious](https://github.com/neocotic/qrious)) is MIT-licensed 
-the vendored Vazirmatn font is licensed under the [SIL Open Font License 1.1](https://openfontlicense.org/).
+**P K** — پیام‌رسان و رسانه اجتماعی ایرانی  
+سایت: [https://p-k.me](https://p-k.me)
